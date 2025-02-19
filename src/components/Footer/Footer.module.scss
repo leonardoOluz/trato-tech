@@ -1,3 +1,5 @@
+@import "styles/breakpoints";
+
 .footer {
   align-items: center;
   background-image: url("../../assets/footer.png");
@@ -5,17 +7,27 @@
   background-repeat: no-repeat;
   bottom: 0;
   display: flex;
+  flex-wrap: wrap;
   height: 80px;
-  justify-content: space-between;
-  padding: 0 50px;
+  justify-content: center;
+  padding: 0 70px;
   width: 100%;
-  div{
+  @media (max-width: $tablet) {
+    padding: 0;
+  }
+  div {
+    flex: 1;
     display: flex;
     gap: 50px;
+    justify-content: left;
+
+    @media (max-width: $tablet) {
+      justify-content: center;
+    }
   }
-  span{
+  span {
     color: white;
-    font-size: 24px;
-    text-align: right;
+    font-size: 18px;
+    text-align: center;
   }
 }
