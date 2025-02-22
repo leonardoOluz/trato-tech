@@ -20,18 +20,3 @@
   padding: 16px;
   width: 100%;
 }
-
-.finalizar {
-  background-color: #041833;
-  border-radius: 36px;
-  color: white;
-  cursor: pointer;
-  font-size: 24px;
-  padding: 20px 50px;
-
-  @media (max-width: $tablet) {
-    flex: 1;
-    width: 100%;
-    align-self: center;
-  }
-}

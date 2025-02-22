@@ -3,6 +3,7 @@ import styles from "./Carrinho.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import Itens from "components/Itens";
 import { resetarCarrinho } from "store/reducers/carrinho";
+import Botao from "components/Botao";
 export default function Carrinho() {
   const dispatch = useDispatch();
   const { carrinho, total } = useSelector((state) => {
@@ -12,14 +13,14 @@ export default function Carrinho() {
     const carrinhoReducer = state.carrinho.reduce((itens, itemNoCarrinho) => {
       const item = state.itens.find((item) => item.id === itemNoCarrinho.id);
       total += item.preco * itemNoCarrinho.quantidade;
-      
-      if(item.titulo.match(regex)){
+
+      if (item.titulo.match(regex)) {
         itens.push({
           ...item,
           quantidade: itemNoCarrinho.quantidade,
         });
       }
-      
+
       return itens;
     }, []);
 
@@ -45,10 +46,9 @@ export default function Carrinho() {
             Subtotal: <strong>R$ {total.toFixed(2)}</strong>
           </span>
         </div>
-        <button 
-        className={styles.finalizar}
-        onClick={() => dispatch(resetarCarrinho())}
-        >Finalizar compra</button>
+        <Botao onClick={() => dispatch(resetarCarrinho())}>
+          Finalizar compra
+        </Botao>
       </div>
     </div>
   );
