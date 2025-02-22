@@ -1,3 +1,5 @@
+@import "styles/breakpoints";
+
 .item {
   background-color: white;
   border-radius: 10px;
@@ -6,17 +8,19 @@
   flex-direction: column;
   overflow: hidden;
   width: 335px;
+
   &-descricao {
-    background-color: #EFF9FF;
+    background-color: #eff9ff;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
   }
+
   &-titulo {
     padding: 16px 16px 0 16px;
     h2 {
-      color: #1875E8;
+      color: #1875e8;
       font-size: 20px;
     }
     p {
@@ -31,11 +35,12 @@
   &-info {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
 
   &-preco {
     align-items: center;
-    background-color: #1875E8;
+    background-color: #1875e8;
     color: white;
     display: flex;
     font-size: 20px;
@@ -43,6 +48,7 @@
     justify-content: center;
     width: 170px;
   }
+
   &-acoes {
     align-items: center;
     display: flex;
@@ -64,20 +70,51 @@
 .itemNoCarrinho {
   align-items: center;
   width: 100%;
+  display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  .quantidade {
+  overflow: hidden;
+
+  &-delete {
+    flex: 1;
+    padding: 10px;
+    text-align: end;
+    align-self: end;
+    cursor: pointer;
+  }
+
+  &-delete-mobile {
+    display: none;
+  }
+
+  &-delete-desktop {
+    display: block;
+    width: 100%;
+  }
+
+  @media(max-width: $mobile-sm) {
+    flex-direction: column;
+
+    &-delete-mobile {
+      display: block;
+    }
+    &-delete-desktop{
+      display: none;
+    }
+    &-info {
+      flex-direction: column;
+    }
+
+  }
+  &-quantidade {
     align-items: center;
     display: flex;
     gap: 10px;
     justify-content: center;
+    height: 70px;
+
     svg {
       cursor: pointer;
     }
   }
-  .item-acoes {
-    gap: 50px;
-    justify-content: flex-end;
-    padding: 0 50px;
-  }
+
 }

@@ -7,12 +7,18 @@ import Itens from "components/Itens";
 export default function Categoria() {
   const { nomeCategoria } = useParams();
 
-  const { categoria, itens } = useSelector((state) => ({
-    categoria: state.categorias.find(
-      (categoria) => categoria.id === nomeCategoria
-    ),
-    itens: state.itens.filter((item) => item.categoria === nomeCategoria),
-  }));
+  const { categoria, itens } = useSelector((state) => {
+    const regex = new RegExp(state.busca, "i");
+    return {
+      categoria: state.categorias.find(
+        (categoria) => categoria.id === nomeCategoria
+      ),
+      itens: state.itens.filter(
+        (item) => item.categoria === nomeCategoria && item.titulo.match(regex)
+      ),
+    };
+  });
+  
   return (
     <div>
       <Header
