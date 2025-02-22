@@ -1,7 +1,18 @@
+@import "styles/breakpoints";
+
 .itens {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 50px;
   margin: 50px;
+  
+  @media (max-width: $mobile-sm) {
+    gap: 25px;
+    margin: 25px 0;
+  }
+
+  @media (max-width: $tablet) {
+    gap: 25px;
+  }
 }

@@ -1,9 +1,15 @@
+@import "styles/breakpoints";
+
 .carrinho {
   align-items: flex-end;
   display: flex;
   flex-direction: column;
   gap: 30px;
   padding: 50px 100px;
+  
+  @media (max-width: $tablet) {
+    padding: 10px;
+  }
 }
 
 .total {
@@ -17,9 +23,15 @@
 
 .finalizar {
   background-color: #041833;
-  border-radius: 16px;
+  border-radius: 36px;
   color: white;
   cursor: pointer;
   font-size: 24px;
   padding: 20px 50px;
+
+  @media (max-width: $tablet) {
+    flex: 1;
+    width: 100%;
+    align-self: center;
+  }
 }
