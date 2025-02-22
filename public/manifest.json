@@ -7,13 +7,7 @@
       "sizes": "512x512",
       "src": "/tratoTechFavcoin/Favicon.png",
       "type": "image/png"
-    },
-    {
-      "purpose": "any",
-      "sizes": "512x512",
-      "src": "/tratoTechFavcoin/Favicon@2x.png",
-      "type": "image/png"
-    }
+    }    
   ],
   "orientation": "any",
   "display": "standalone",
@@ -21,8 +15,8 @@
   "lang": "pt-BR",
   "name": "Trato Tech",
   "short_name": "TTech",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "./index.html",
+  "scope": "./index.html",
   "description": "App de vendas de produtos Trato Tech",
   "id": ""
 }
