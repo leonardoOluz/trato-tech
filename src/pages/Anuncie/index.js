@@ -4,7 +4,11 @@ import { useSelector } from "react-redux";
 import Botao from "components/Botao";
 import { useForm } from "react-hook-form";
 export default function Anuncie() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      categoria: "",
+    },
+  });
   const categorias = useSelector((state) =>
     state.categorias.map(({ id, nome }) => ({ id, nome }))
   );
@@ -20,21 +24,21 @@ export default function Anuncie() {
       />
       <form className={styles.formulario} onSubmit={handleSubmit(cadastrar)}>
         <input
-          {...register("nome")}
+          {...register("nome", { required: true })}
           placeholder="Nome do produto"
           alt="Nome do produto"
         />
         <input
-          {...register("descricao")}
+          {...register("descricao", { required: true })}
           placeholder="Descrição do produto"
           alt="Descrição do produto"
         />
         <input
-          {...register("imagem")}
+          {...register("imagem", { required: true })}
           placeholder="URL da imagem do produto"
           alt="URL da imagem do produto"
         />
-        <select {...register("categoria")}>
+        <select {...register("categoria", { required: true })}>
           <option disabled value="">
             Selecione uma categoria
           </option>
@@ -45,7 +49,7 @@ export default function Anuncie() {
           ))}
         </select>
         <input
-          {...register("preco")}
+          {...register("preco", { required: true })}
           type="number"
           placeholder="Valor do produto"
         />
