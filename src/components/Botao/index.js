@@ -1,7 +1,14 @@
+import classNames from "classnames";
 import styles from "./Botao.module.scss";
-export default function Botao({ children, type = "button", onClick }) {
+export default function Botao({ children, type = "button", onClick, anuciar }) {
   return (
-    <button className={styles.botao} type={type} onClick={onClick}>
+    <button
+      className={classNames(styles.botao, {
+        [styles["botao-anunciar"]]: anuciar,
+      })}
+      type={type}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
