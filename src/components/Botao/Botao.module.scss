@@ -8,9 +8,16 @@
   font-size: 24px;
   padding: 20px 50px;
 
-  @media (max-width: $tablet) {
+  @media (max-width: $mobile-sm) {
+    padding: 20px;
     flex: 1;
     width: 100%;
     align-self: center;
+  }
+}
+
+.botao-anunciar {
+  @media (max-width: $mobile-sm) {
+    width: auto;
   }
 }

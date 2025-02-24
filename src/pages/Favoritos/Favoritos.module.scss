@@ -1,0 +1,33 @@
+@import "styles/breakpoints";
+
+.favoritos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+  margin: 50px;
+
+  &-vazio {
+    padding: 100px 0;
+    font-size: 54px;
+    font-weight: 800;
+    line-height: 54px;
+    color: rgba(119, 104, 104, 0.582);
+    
+    @media (max-width: $mobile-sm) {
+      padding: 50px 0;
+      font-size: 34px;
+      text-align: center;  
+    }
+
+  }
+  
+  @media (max-width: $mobile-sm) {
+    gap: 25px;
+    margin: 25px 0;
+  }
+
+  @media (max-width: $tablet) {
+    gap: 25px;
+  }
+}
