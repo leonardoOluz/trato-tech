@@ -51,10 +51,10 @@ export default function Anuncie() {
           </span>
         )}
         <input
-          {...register("imagem", { required: "Campo obrigatório" })}
-          placeholder="URL da imagem do produto"
-          alt="URL da imagem do produto"
-          className={errors.imagem && styles["input-erro"]}
+          {...register("foto", { required: "Campo obrigatório" })}
+          placeholder="URL da foto do produto"
+          alt="URL da foto do produto"
+          className={errors.foto && styles["input-erro"]}
         />
         {errors.imagem && (
           <span className={styles["mensagem-erro"]}>
@@ -84,6 +84,7 @@ export default function Anuncie() {
         <input
           {...register("preco", {
             required: "coloque um valor de preço valido",
+            valueAsNumber: true,
           })}
           type="number"
           placeholder="Valor do produto"
