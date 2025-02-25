@@ -4,10 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import Botao from "components/Botao";
 import { useForm } from "react-hook-form";
 import { adicionarItem } from "store/reducers/itens";
+import { useNavigate, useParams } from "react-router-dom";
 export default function Anuncie() {
-  const { register, handleSubmit, formState } = useForm({
+  const { nomeCategoria = "" } = useParams();
+  const navegar = useNavigate();
+  const { register, handleSubmit, formState, reset } = useForm({
     defaultValues: {
-      categoria: "",
+      categoria: nomeCategoria,
     },
   });
   const categorias = useSelector((state) =>
@@ -16,8 +19,11 @@ export default function Anuncie() {
   const dispatch = useDispatch();
   const cadastrar = (valores) => {
     dispatch(adicionarItem(valores));
+    reset();
+    navegar("/");
   };
 
+  console.log(nomeCategoria);
   const { errors } = formState;
   return (
     <div className={styles.container}>
@@ -65,6 +71,7 @@ export default function Anuncie() {
         <select
           {...register("categoria", { required: "selecione uma categoria" })}
           className={errors.categoria && styles["input-erro"]}
+          disabled={!!nomeCategoria}
         >
           <option disabled value="">
             Selecione uma categoria

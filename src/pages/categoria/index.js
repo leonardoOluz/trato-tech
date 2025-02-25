@@ -1,12 +1,13 @@
 import Header from "components/Header";
 import styles from "./Categoria.module.scss";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Itens from "components/Itens";
+import Botao from "components/Botao";
 
 export default function Categoria() {
   const { nomeCategoria } = useParams();
-
+  const navegar = useNavigate();
   const { categoria, itens } = useSelector((state) => {
     const regex = new RegExp(state.busca, "i");
     return {
@@ -18,14 +19,17 @@ export default function Categoria() {
       ),
     };
   });
-  
   return (
     <div>
       <Header
         titulo={categoria.nome}
         descricao={categoria.descricao}
         imagem={categoria.header}
-      />
+      >
+        <Botao onClick={() => navegar(`/anuncie/${nomeCategoria}`)} anuciar>
+          Quero anunciar
+        </Botao>
+      </Header>
       <div className={styles.itens}>
         {itens?.map((item) => (
           <Itens key={item.id} {...item} />
