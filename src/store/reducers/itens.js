@@ -289,9 +289,18 @@ const itensSlice = createSlice({
         return item;
       });
     },
+    adicionarItem: (state, { payload }) => {
+      console.log(payload);
+      state.push({
+        ...payload,
+        preco: Number(payload.preco),
+        id: uuid(),
+        favorito: false,
+      });
+    },
   },
 });
 
-export const { mudarFavorito } = itensSlice.actions;
+export const { mudarFavorito, adicionarItem } = itensSlice.actions;
 
 export default itensSlice.reducer;
