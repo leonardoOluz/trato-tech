@@ -2,7 +2,7 @@ import styles from "./Header.module.scss";
 import TituloComImagem from "./TituloComImagem";
 import TituloSemImagem from "./TituloSemImagem";
 
-export default function Header({ titulo, descricao, className = "", imagem }) {
+export default function Header({ titulo, descricao, className = "", imagem, nomeCategoria, children }) {
   return (
     <header className={styles.header}>
       {titulo && !imagem && (
@@ -14,7 +14,9 @@ export default function Header({ titulo, descricao, className = "", imagem }) {
           descricao={descricao}
           imagem={imagem}
           titulo={titulo}
-        />
+          >
+          {children}
+          </TituloComImagem>
       )}
     </header>
   );

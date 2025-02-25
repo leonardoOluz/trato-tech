@@ -3,6 +3,7 @@ import styles from "./Home.module.scss";
 import relogio from "assets/relogio.png";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Botao from "components/Botao";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -15,7 +16,11 @@ export default function Home() {
         descricao="Compre, venda, anuncie, troque diversos tipos de produtos e serviços da área de tecnologia!"
         className={styles.header}
         imagem={relogio}
-      />
+      >
+        <Botao onClick={() => navigate("/anuncie")} anuciar>
+          Quero anunciar
+        </Botao>
+      </Header>
       <div className={styles.categorias}>
         <div className={styles["categorias-title"]}>
           <h1>Categoria</h1>

@@ -29,7 +29,14 @@
   }
 
   &-imagem {
+    text-align: center;
+    width: 335px;
+    height: 160px;
     margin: 0 auto;
+    img {
+      object-fit: cover;
+      height: 100%;
+    }
   }
 
   &-info {
@@ -91,19 +98,18 @@
     width: 100%;
   }
 
-  @media(max-width: $mobile-sm) {
+  @media (max-width: $mobile-sm) {
     flex-direction: column;
 
     &-delete-mobile {
       display: block;
     }
-    &-delete-desktop{
+    &-delete-desktop {
       display: none;
     }
     &-info {
       flex-direction: column;
     }
-
   }
   &-quantidade {
     align-items: center;
@@ -116,5 +122,4 @@
       cursor: pointer;
     }
   }
-
 }

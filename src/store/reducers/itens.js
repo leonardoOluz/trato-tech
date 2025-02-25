@@ -284,16 +284,14 @@ const itensSlice = createSlice({
   initialState,
   reducers: {
     mudarFavorito: (state, { payload }) => {
-      state = state.map((item) => {
+      state.map((item) => {
         if (item.id === payload) item.favorito = !item.favorito;
         return item;
       });
     },
     adicionarItem: (state, { payload }) => {
-      console.log(payload);
       state.push({
         ...payload,
-        preco: Number(payload.preco),
         id: uuid(),
         favorito: false,
       });
