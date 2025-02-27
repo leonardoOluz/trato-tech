@@ -296,9 +296,12 @@ const itensSlice = createSlice({
         favorito: false,
       });
     },
+    mudarItem: (state, { payload }) => {
+      console.log(payload);
+    },
   },
 });
 
-export const { mudarFavorito, adicionarItem } = itensSlice.actions;
+export const { mudarFavorito, adicionarItem, mudarItem } = itensSlice.actions;
 
 export default itensSlice.reducer;
