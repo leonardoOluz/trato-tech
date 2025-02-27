@@ -44,7 +44,7 @@ export default function Navbar() {
           {location.pathname === "/carrinho" ? (
             <RiShoppingCartFill {...iconeProps} />
           ) : (
-            <RiShoppingCart2Line {...iconeProps} />
+            <RiShoppingCart2Line {...iconeProps} color="#6BD1FF" />
           )}
         </Link>
       </div>

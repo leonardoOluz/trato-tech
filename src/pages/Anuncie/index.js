@@ -5,6 +5,7 @@ import Botao from "components/Botao";
 import { useForm } from "react-hook-form";
 import { adicionarItem } from "store/reducers/itens";
 import { useNavigate, useParams } from "react-router-dom";
+import Input from "components/Input";
 export default function Anuncie() {
   const { nomeCategoria = "" } = useParams();
   const navegar = useNavigate();
@@ -22,8 +23,6 @@ export default function Anuncie() {
     reset();
     navegar("/");
   };
-
-  console.log(nomeCategoria);
   const { errors } = formState;
   return (
     <div className={styles.container}>
@@ -32,7 +31,7 @@ export default function Anuncie() {
         descricao="Anuncie seus produtos no melhor site do Brasil"
       />
       <form className={styles.formulario} onSubmit={handleSubmit(cadastrar)}>
-        <input
+        <Input
           {...register("titulo", { required: "Campo obrigatório" })}
           placeholder="Titulo do produto"
           alt="Titulo do produto"
@@ -44,7 +43,7 @@ export default function Anuncie() {
             {errors.titulo.message}{" "}
           </span>
         )}
-        <input
+        <Input
           {...register("descricao", { required: "Campo obrigatório" })}
           placeholder="Descrição do produto"
           alt="Descrição do produto"
@@ -56,7 +55,7 @@ export default function Anuncie() {
             {errors.descricao.message}{" "}
           </span>
         )}
-        <input
+        <Input
           {...register("foto", { required: "Campo obrigatório" })}
           placeholder="URL da foto do produto"
           alt="URL da foto do produto"
@@ -88,7 +87,7 @@ export default function Anuncie() {
             {errors.categoria.message}{" "}
           </span>
         )}
-        <input
+        <Input
           {...register("preco", {
             required: "coloque um valor de preço valido",
             valueAsNumber: true,
