@@ -297,7 +297,8 @@ const itensSlice = createSlice({
       });
     },
     mudarItem: (state, { payload }) => {
-      console.log(payload);
+      const index = state.findIndex((item) => item.id === payload.id);
+      Object.assign(state[index], payload.item);
     },
   },
 });
