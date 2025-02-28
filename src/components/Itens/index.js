@@ -101,7 +101,10 @@ function Itens(props) {
         <AiFillCloseCircle
           {...iconProps}
           className={styles["deletar-item"]}
-          onClick={() => dispatch(deletarItem(id))}
+          onClick={() => {
+            dispatch(deletarItemCarrinho(id));
+            dispatch(deletarItem(id));
+          }}
         />
       )}
       <div className={styles["item-imagem"]}>
