@@ -7,6 +7,7 @@ import Botao from "components/Botao";
 import { useCallback, useEffect } from "react";
 import instance from "common/config/api";
 import { adicionarCategorias } from "store/reducers/categorias";
+import { adicionarItens } from "store/reducers/itens";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -18,9 +19,15 @@ export default function Home() {
     dispatch(adicionarCategorias(response.data.categorias));
   }, [dispatch]);
 
+  const buscarItens = useCallback(async () => {
+    const response = await instance.get("itens.json");
+    dispatch(adicionarItens(response.data.itens));
+  }, [dispatch]);
+
   useEffect(() => {
     buscarCategorias();
-  }, [buscarCategorias]);
+    buscarItens();
+  }, [buscarCategorias, buscarItens]);
 
   return (
     <div>
