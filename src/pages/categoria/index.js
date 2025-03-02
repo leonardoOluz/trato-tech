@@ -13,7 +13,7 @@ export default function Categoria() {
     return {
       categoria: state.categorias.find(
         (categoria) => categoria.id === nomeCategoria
-      ),
+      ) || {},
       itens: state.itens.filter(
         (item) => item.categoria === nomeCategoria && item.titulo.match(regex)
       ),
