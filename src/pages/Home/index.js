@@ -14,8 +14,8 @@ export default function Home() {
   const categorias = useSelector((state) => state.categorias);
 
   const buscarCategorias = useCallback(async () => {
-    const response = await instance.get("/categorias");
-    dispatch(adicionarCategorias(response.data));
+    const response = await instance.get("categorias.json");
+    dispatch(adicionarCategorias(response.data.categorias));
   }, [dispatch]);
 
   useEffect(() => {
