@@ -46,7 +46,7 @@ const categoriasSlice = createSlice({
       })
       .addCase(resetarCarrinho.type, () => {
         toast({
-          title: "Carrinho",
+          title: "Sucesso",
           description: "Compra finalizada com sucesso",
           status: "success",
           duration: 2500,
