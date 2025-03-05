@@ -1,11 +1,21 @@
 import Header from "components/Header";
 import styles from "./Categoria.module.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import Itens from "components/Itens";
 import Botao from "components/Botao";
+import { useEffect } from "react";
+import { buscarItens } from "store/reducers/itens";
+import { buscarCategorias } from "store/reducers/categorias";
 
 export default function Categoria() {
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(buscarItens());
+    dispatch(buscarCategorias());
+  }, [dispatch]);
+
   const { nomeCategoria } = useParams();
   const navegar = useNavigate();
   const { categoria, itens } = useSelector((state) => {
@@ -19,6 +29,7 @@ export default function Categoria() {
       ),
     };
   });
+
   return (
     <div>
       <Header

@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import Itens from "components/Itens";
 import { resetarCarrinho } from "store/reducers/carrinho";
 import Botao from "components/Botao";
+import { useNavigate } from "react-router-dom";
 export default function Carrinho() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { carrinho, total } = useSelector((state) => {
     let total = 0;
     const regex = new RegExp(state.busca, "i");
@@ -29,7 +31,10 @@ export default function Carrinho() {
       total,
     };
   });
-
+  const finalizarCompra = () => {
+    dispatch(resetarCarrinho());
+    navigate("/");
+  };
   return (
     <div>
       <Header
@@ -46,9 +51,7 @@ export default function Carrinho() {
             Subtotal: <strong>R$ {total.toFixed(2)}</strong>
           </span>
         </div>
-        <Botao onClick={() => dispatch(resetarCarrinho())}>
-          Finalizar compra
-        </Botao>
+        <Botao onClick={finalizarCompra}>Finalizar compra</Botao>
       </div>
     </div>
   );

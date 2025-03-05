@@ -42,17 +42,21 @@ const itensSlice = createSlice({
           title: "Itens",
           description: "Itens carregados com sucesso",
           status: "success",
-          duration: 1500,
+          duration: 1000,
           isClosable: false,
         });
-        return payload;
+        const novoItens = payload.filter((item) => {
+          return !state.some((itemExistente) => itemExistente.id === item.id);
+        });
+
+        state.push(...novoItens);
       })
       .addCase(buscarItens.pending, (state, { payload }) => {
         toast({
           title: "Itens",
           description: "Carregando Itens",
           status: "loading",
-          duration: 2000,
+          duration: 500,
           isClosable: false,
         });
       })
@@ -63,7 +67,7 @@ const itensSlice = createSlice({
           status: "error",
           duration: 2500,
           isClosable: false,
-        })
+        });
       });
   },
 });
