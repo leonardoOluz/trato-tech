@@ -17,5 +17,5 @@ root.render(
 
 toast({
   description: "Seja bem vindo ao TratoTech",
-  duration: 2500,
+  duration: 1400,
 })
