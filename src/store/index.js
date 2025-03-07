@@ -3,7 +3,7 @@ import categoriasSlice from "./reducers/categorias";
 import itensSlice from "./reducers/itens";
 import carrinhoSlice from "./reducers/carrinho";
 import buscaSlice from "./reducers/busca";
-import { listener } from "middlewares/categorias";
+import { listener } from "store/middlewares/categorias";
 
 
 const store = configureStore({
