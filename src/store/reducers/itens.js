@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import itensService from "services/itens";
 import { v4 as uuid } from "uuid";
-import { createStandaloneToast } from "@chakra-ui/toast";
-const { toast } = createStandaloneToast();
+// import { createStandaloneToast } from "@chakra-ui/toast";
+// const { toast } = createStandaloneToast();
 
 export const buscarItens = createAsyncThunk(
   "itens/buscar",
@@ -38,13 +38,13 @@ const itensSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(buscarItens.fulfilled, (state, { payload }) => {
-        toast({
-          title: "Itens",
-          description: "Itens carregados com sucesso",
-          status: "success",
-          duration: 1000,
-          isClosable: false,
-        });
+        // toast({
+        //   title: "Itens",
+        //   description: "Itens carregados com sucesso",
+        //   status: "success",
+        //   duration: 1000,
+        //   isClosable: false,
+        // });
         const novoItens = payload.filter((item) => {
           return !state.some((itemExistente) => itemExistente.id === item.id);
         });
@@ -52,22 +52,22 @@ const itensSlice = createSlice({
         state.push(...novoItens);
       })
       .addCase(buscarItens.pending, (state, { payload }) => {
-        toast({
-          title: "Itens",
-          description: "Carregando Itens",
-          status: "loading",
-          duration: 500,
-          isClosable: false,
-        });
+        // toast({
+        //   title: "Itens",
+        //   description: "Carregando Itens",
+        //   status: "loading",
+        //   duration: 500,
+        //   isClosable: false,
+        // });
       })
       .addCase(buscarItens.rejected, (state, { payload }) => {
-        toast({
-          title: "Itens",
-          description: "Erro ao carregar Itens",
-          status: "error",
-          duration: 2500,
-          isClosable: false,
-        });
+        // toast({
+        //   title: "Itens",
+        //   description: "Erro ao carregar Itens",
+        //   status: "error",
+        //   duration: 2500,
+        //   isClosable: false,
+        // });
       });
   },
 });

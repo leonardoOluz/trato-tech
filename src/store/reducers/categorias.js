@@ -6,6 +6,9 @@ const initialState = [];
 const { toast } = createStandaloneToast();
 
 export const carregarCategorias = createAction("categorias/carregarCategorias");
+export const carregarUmaCategoria = createAction(
+  "categorias/carregarUmaCategoria"
+);
 
 export const buscarCategorias = createAsyncThunk(
   "categorias/buscar",
@@ -18,6 +21,9 @@ const categoriasSlice = createSlice({
   reducers: {
     adicionarTodasACategorias: (state, { payload }) => {
       return payload;
+    },
+    adicionarUmaCategoria: (state, { payload }) => {
+      state.push(payload);
     },
   },
   extraReducers: (builder) => {
@@ -32,5 +38,5 @@ const categoriasSlice = createSlice({
     });
   },
 });
-export const { adicionarTodasACategorias } = categoriasSlice.actions;
+export const { adicionarTodasACategorias, adicionarUmaCategoria } = categoriasSlice.actions;
 export default categoriasSlice.reducer;

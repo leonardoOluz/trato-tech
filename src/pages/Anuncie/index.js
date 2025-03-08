@@ -6,6 +6,11 @@ import { useForm } from "react-hook-form";
 import { adicionarItem } from "store/reducers/itens";
 import { useNavigate, useParams } from "react-router-dom";
 import Input from "components/Input";
+import { useEffect } from "react";
+import {
+  carregarCategorias,
+  carregarUmaCategoria,
+} from "store/reducers/categorias";
 export default function Anuncie() {
   const { nomeCategoria = "" } = useParams();
   const navegar = useNavigate();
@@ -24,6 +29,12 @@ export default function Anuncie() {
     navegar("/");
   };
   const { errors } = formState;
+
+  useEffect(() => {
+    dispatch(
+      nomeCategoria ? carregarUmaCategoria(nomeCategoria) : carregarCategorias()
+    );
+  }, [dispatch, nomeCategoria]);
   return (
     <div className={styles.container}>
       <Header
