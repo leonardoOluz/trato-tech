@@ -8,9 +8,9 @@ import {
 } from "store/reducers/categorias";
 import criarTarefas from "./utils/criarTarefas";
 
-export const listener = createListenerMiddleware();
+export const categoriaslistener = createListenerMiddleware();
 
-listener.startListening({
+categoriaslistener.startListening({
   actionCreator: carregarCategorias,
   effect: async (action, { dispatch, fork, unsubscribe }) => {
     const response = await criarTarefas({
@@ -28,7 +28,7 @@ listener.startListening({
   },
 });
 
-listener.startListening({
+categoriaslistener.startListening({
   actionCreator: carregarUmaCategoria,
   effect: async (action, { fork, dispatch, unsubscribe, getState }) => {
     const { categorias } = getState();
