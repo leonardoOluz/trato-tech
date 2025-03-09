@@ -12,8 +12,9 @@ import {
   carregarUmaCategoria,
 } from "store/reducers/categorias";
 export default function Anuncie() {
-  const { nomeCategoria = "" } = useParams();
   const navegar = useNavigate();
+  const dispatch = useDispatch();
+  const { nomeCategoria = "" } = useParams();
   const { register, handleSubmit, formState, reset } = useForm({
     defaultValues: {
       categoria: nomeCategoria,
@@ -22,7 +23,6 @@ export default function Anuncie() {
   const categorias = useSelector((state) =>
     state.categorias.map(({ id, nome }) => ({ id, nome }))
   );
-  const dispatch = useDispatch();
   const cadastrar = (valores) => {
     dispatch(adicionarItem(valores));
     reset();
