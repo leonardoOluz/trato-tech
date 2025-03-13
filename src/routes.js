@@ -5,6 +5,7 @@ import Categoria from "pages/categoria";
 import Carrinho from "pages/Carrinho";
 import Anuncie from "pages/Anuncie";
 import Favoritos from "pages/Favoritos";
+import Pagamento from "pages/Pagamento";
 
 export default function Router() {
   return (
@@ -14,9 +15,10 @@ export default function Router() {
           <Route index element={<Home />} />
           <Route path="/categoria/:nomeCategoria" element={<Categoria />} />
           <Route path="carrinho" element={<Carrinho />} />
+          <Route path="favoritos" element={<Favoritos />} />
           <Route path="anuncie/:nomeCategoria" element={<Anuncie />} />
           <Route path="anuncie" element={<Anuncie />} />
-          <Route path="favoritos" element={<Favoritos />} />
+          <Route path="pagamento" element={<Pagamento />} />
         </Route>
       </Routes>
     </BrowserRouter>
