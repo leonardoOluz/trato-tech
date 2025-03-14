@@ -6,24 +6,26 @@ import Botao from "components/Botao";
 import { useNavigate } from "react-router-dom";
 export default function Carrinho() {
   const navigate = useNavigate();
+
   const { carrinho, total } = useSelector((state) => {
-    let total = 0;
     const regex = new RegExp(state.busca, "i");
-    const carrinhoReducer = state.carrinho.reduce((itens, itemNoCarrinho) => {
-      const item = state.itens.find((item) => item.id === itemNoCarrinho.id);
-      total += item.preco * itemNoCarrinho.quantidade;
-      if (item.titulo.match(regex)) {
-        itens.push({
-          ...item,
-          quantidade: itemNoCarrinho.quantidade,
-        });
-      }
-      return itens;
-    }, []);
+    const carrinhoReducer = state.carrinho.data.reduce(
+      (itens, itemNoCarrinho) => {
+        const item = state.itens.find((item) => item.id === itemNoCarrinho.id);
+        if (item.titulo.match(regex)) {
+          itens.push({
+            ...item,
+            quantidade: itemNoCarrinho.quantidade,
+          });
+        }
+        return itens;
+      },
+      []
+    );
 
     return {
       carrinho: carrinhoReducer,
-      total,
+      total: state.carrinho.total,
     };
   });
   return (

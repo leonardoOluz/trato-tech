@@ -1,9 +1,9 @@
 const { default: instance } = require("common/config/api");
 
 const cartoesService = {
-  buscarPorIdUsuario: async (idUsuario) => {
+  buscarPorIdUsuario: async (usuarioId) => {
     const response = await instance.get("/cartoes.json");
-    return response.data.cartoes.find((cartao) => cartao.idUsuario === idUsuario);
+    return response.data.cartoes.filter((cartao) => cartao.usuarioId === usuarioId);
   }
 }
 

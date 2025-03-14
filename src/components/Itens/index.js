@@ -40,7 +40,7 @@ function Itens(props) {
   const [modoEdicao, setModoEdicao] = useState(false);
   const [novoTitulo, setNovoTitulo] = useState(titulo);
   const estaNoCarrinho = useSelector((state) =>
-    state.carrinho.some((item) => item.id === id)
+    state.carrinho.data?.some((item) => item.id === id)
   );
   const resolverFavorito = () => {
     dispatch(mudarFavorito(id));

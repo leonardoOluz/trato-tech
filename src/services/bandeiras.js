@@ -5,8 +5,8 @@ const bandeirasService = {
     // const query = new URLSearchParams();
     // bandeiraId.forEach(id => query.append("id", id));
     const response = await instance.get("/bandeiras.json");
-    return response.data.bandeiras.filter(
-      (bandeira) => bandeira.id === bandeiraId
+    return response.data.bandeiras.filter((bandeira) =>
+      bandeiraId.includes(bandeira.id)
     );
   },
 };
