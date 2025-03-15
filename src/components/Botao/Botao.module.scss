@@ -7,6 +7,11 @@
   cursor: pointer;
   font-size: 24px;
   padding: 20px 50px;
+  &:disabled {
+    cursor: not-allowed;
+    background-color: #020611;
+    opacity: 0.5;
+  }
 
   @media (max-width: $mobile-sm) {
     padding: 20px;

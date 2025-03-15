@@ -1,3 +1,4 @@
+import { createStandaloneToast } from "@chakra-ui/toast";
 import {
   all,
   call,
@@ -13,12 +14,15 @@ import usuariosService from "services/usuarios";
 import {
   carregarPagamento,
   deletarItemCarrinho,
+  finalizarCompra,
   mudarCarrinho,
   mudarQuantidade,
   mudarTotal,
+  resetarCarrinho,
 } from "store/reducers/carrinho";
 import { adicionarUsuario } from "store/reducers/usuario";
-const usuarioLogado = 1;
+const { toast } = createStandaloneToast();
+const usuarioLogado = 2;
 
 function* carregarPagamentoSaga() {
   try {
@@ -38,11 +42,9 @@ function* carregarPagamentoSaga() {
         bandeira: bandeiraDoCartao.nome,
       };
     });
-    yield console.log({ ...usuario, cartoes: cartoesComBandeiras });
     yield put(adicionarUsuario({ ...usuario, cartoes: cartoesComBandeiras }));
   } catch (error) {}
 }
-
 function* calcularTotal() {
   yield delay(500);
   const state = yield select();
@@ -53,8 +55,32 @@ function* calcularTotal() {
 
   yield put(mudarTotal(total));
 }
-
+function* finalizarCompraSaga({ payload }) {
+  const { totalCalculado, formaDePagamento } = payload;
+  if (totalCalculado > formaDePagamento.saldo) {
+    return yield toast({
+      title: "Erro",
+      description: "Saldo insuficiente",
+      status: "error",
+      duration: 2500,
+      isClosable: true,
+    });
+  } else {
+    yield toast({
+      title: "Sucesso",
+      description: "Compra finalizada com sucesso",
+      status: "success",
+      duration: 2500,
+      isClosable: false,
+    });
+    return yield put(resetarCarrinho());
+  }
+}
 export function* carrinhoSaga() {
   yield takeLatest(carregarPagamento, carregarPagamentoSaga);
-  yield takeEvery([mudarQuantidade, mudarCarrinho, deletarItemCarrinho], calcularTotal);
+  yield takeEvery(
+    [mudarQuantidade, mudarCarrinho, deletarItemCarrinho],
+    calcularTotal
+  );
+  yield takeLatest(finalizarCompra, finalizarCompraSaga);
 }

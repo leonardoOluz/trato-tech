@@ -44,7 +44,12 @@ export default function Carrinho() {
             Subtotal: <strong>R$ {total.toFixed(2)}</strong>
           </span>
         </div>
-        <Botao onClick={() => navigate("/pagamento")}>Finalizar compra</Botao>
+        <Botao
+          disabled={!carrinho.length}
+          onClick={() => navigate("/pagamento")}
+        >
+          Finalizar compra
+        </Botao>
       </div>
     </div>
   );
